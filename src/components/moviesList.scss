@@ -1,0 +1,27 @@
+.list {
+  display: flex;
+  gap: 50px;
+  transition: 0.5s ease all;
+}
+.arrow_prev {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translate(50%, 50%);
+  transition: 0.5s ease all;
+  cursor: pointer;
+  &:hover {
+    scale: 1.1;
+  }
+}
+.arrow_next {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translate(-50%, 50%);
+  cursor: pointer;
+  transition: 0.5s ease all;
+  &:hover {
+    scale: 1.1;
+  }
+}
