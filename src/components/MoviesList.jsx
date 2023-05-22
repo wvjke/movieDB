@@ -5,11 +5,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { useState } from "react";
 import Arrows from "../layouts/Arrows";
-import { Skeleton, Stack } from "@mui/material";
+
 const MoviesList = ({ movies }) => {
   const [swiper, setSwiper] = useState(null);
-
-  console.log(movies);
 
   return (
     <section className="list">
@@ -31,6 +29,7 @@ const MoviesList = ({ movies }) => {
                     title={item.title}
                     year={item.release_date.slice(0, 4)}
                     vote={Math.round(item.vote_average)}
+                    genres={item.genres}
                   />
                 </SwiperSlide>
               );

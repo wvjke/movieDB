@@ -6,7 +6,7 @@ import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-const MovieCard = ({ title, year, vote, imageUrl }) => {
+const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
   const [color, setColor] = useState("primary");
 
   const starsCount = () => {
@@ -30,7 +30,7 @@ const MovieCard = ({ title, year, vote, imageUrl }) => {
         <h2 className="card_descr_title">{title}</h2>
         <ul className="card_descr_details">
           <li>{year}</li>
-          <li>Action/Drama/Comedy</li>
+          <li>{`${genres[0]} / ${genres[1]}`}</li>
         </ul>
         <div className="card_descr_stars">{starsCount()}</div>
         <Link className="card_descr_link" to="/">
