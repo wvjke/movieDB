@@ -25,7 +25,7 @@ const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
   return (
     <article className="card swiper-lazy swiper-lazy-loading">
       <div className="card_img">
-        <img src={imageUrl} alt="" loading="lazy" />
+        <img src={imageUrl || "noImg.png"} alt="" loading="lazy" />
       </div>
       <div className="card_descr">
         <h2 className="card_descr_title">{title}</h2>

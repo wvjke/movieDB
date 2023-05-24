@@ -1,21 +1,32 @@
 import "./homePage.scss";
-import { getPopularMovies } from "../utils/api";
+import { getPopularMovies, findMovie } from "../utils/api";
 import { useEffect, useState } from "react";
 import MoviesList from "../components/MoviesList";
 import { genres } from "../utils/genres";
+import SearchPanel from "../components/SearchPanel";
 const HomePage = () => {
-  const [popularMovies, setPopularMovies] = useState(null);
+  const [movies, setMovies] = useState(null);
+
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     getPopularMovies().then((res) => {
-      setPopularMovies(res);
+      setMovies(res);
     });
   }, []);
 
-  const parseGenres = () => {
+  useEffect(() => {
+    if (searchValue !== "") {
+      findMovie(searchValue).then((res) => {
+        setMovies(res);
+      });
+    }
+  }, [searchValue]);
+
+  const parseGenres = (list) => {
     let newMoviesObj = {};
-    if (popularMovies) {
-      newMoviesObj = popularMovies.map((item) => {
+    if (list) {
+      newMoviesObj = list.map((item) => {
         const genresArray = [];
         for (let i = 0; i < item.genre_ids.length; i++) {
           for (let j = 0; j < 19; j++) {
@@ -30,12 +41,15 @@ const HomePage = () => {
     return newMoviesObj;
   };
 
-  const filterdMovies = parseGenres();
+  const filterdMovies = parseGenres(movies);
 
   return (
-    <MoviesList
-      movies={Object.keys(filterdMovies).length === 0 ? null : filterdMovies}
-    />
+    <>
+      <SearchPanel value={(value) => setSearchValue(value)} />
+      <MoviesList
+        movies={Object.keys(filterdMovies).length === 0 ? null : filterdMovies}
+      />
+    </>
   );
 };
 
