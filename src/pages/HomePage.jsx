@@ -1,28 +1,20 @@
 import "./homePage.scss";
-import { getPopularMovies, getGenres } from "../utils/api";
+import { getPopularMovies } from "../utils/api";
 import { useEffect, useState } from "react";
 import MoviesList from "../components/MoviesList";
-
+import { genres } from "../utils/genres";
 const HomePage = () => {
   const [popularMovies, setPopularMovies] = useState(null);
-  const [genres, setGenres] = useState(null);
 
   useEffect(() => {
     getPopularMovies().then((res) => {
       setPopularMovies(res);
-      getGenres().then((res) => setGenres(res));
     });
   }, []);
 
-  useEffect(() => {
-    if (popularMovies && genres) {
-      parseGenres();
-    }
-  }, [genres]);
-
   const parseGenres = () => {
     let newMoviesObj = {};
-    if (genres && popularMovies) {
+    if (popularMovies) {
       newMoviesObj = popularMovies.map((item) => {
         const genresArray = [];
         for (let i = 0; i < item.genre_ids.length; i++) {

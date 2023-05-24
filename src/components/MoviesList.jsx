@@ -25,7 +25,7 @@ const MoviesList = ({ movies }) => {
               return (
                 <SwiperSlide key={i}>
                   <MovieCard
-                    imageUrl={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                    imageUrl={`https://image.tmdb.org/t/p/w400${item.poster_path}`}
                     title={item.title}
                     year={item.release_date.slice(0, 4)}
                     vote={Math.round(item.vote_average)}
