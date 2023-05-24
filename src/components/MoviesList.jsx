@@ -18,8 +18,8 @@ const MoviesList = ({ movies }) => {
             speed={1440}
             spaceBetween={50}
             slidesPerView={3}
+            lazyPreloadPrevNext={1}
             onSwiper={(s) => setSwiper(s)}
-            onSlideChange={() => {}}
           >
             {movies.map((item, i) => {
               return (

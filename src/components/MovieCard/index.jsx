@@ -5,6 +5,7 @@ import "./index.scss";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
   const [color, setColor] = useState("primary");
@@ -22,9 +23,9 @@ const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
   };
 
   return (
-    <article className="card">
+    <article className="card swiper-lazy swiper-lazy-loading">
       <div className="card_img">
-        <img src={imageUrl} alt="" />
+        <img src={imageUrl} alt="" loading="lazy" />
       </div>
       <div className="card_descr">
         <h2 className="card_descr_title">{title}</h2>
@@ -45,6 +46,7 @@ const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
           <span>ADD TO FAVORITE</span>
         </div>
       </div>
+      <CircularProgress color="primary" className="swiper-lazy-preloader" />
     </article>
   );
 };
