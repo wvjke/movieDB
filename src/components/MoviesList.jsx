@@ -25,6 +25,7 @@ const MoviesList = ({ movies }) => {
               return (
                 <SwiperSlide key={i}>
                   <MovieCard
+                    id={item.id}
                     imageUrl={
                       item.poster_path
                         ? `https://image.tmdb.org/t/p/w400${item.poster_path}`

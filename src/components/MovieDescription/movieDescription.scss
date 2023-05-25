@@ -1,0 +1,104 @@
+$base-color: #ffda00;
+
+.movie_descr {
+  background-color: black;
+  width: 100%;
+  border-radius: 10px;
+  padding: 20px 30px;
+  box-shadow: 0px 10px 30px 1px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  &_title {
+    font-weight: 600;
+    font-size: 36px;
+    color: $base-color;
+    margin: 0;
+    margin-bottom: 0px;
+  }
+  &_subtitle {
+    display: flex;
+    color: white;
+    font-size: 16px;
+    padding: 0;
+    font-weight: 300;
+    margin-bottom: 30px;
+    li {
+      margin: 0 20px;
+      &:first-child {
+        margin-left: 0;
+        list-style-type: none;
+      }
+    }
+  }
+  &_vote {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    margin-bottom: 20px;
+    &_rate {
+      position: relative;
+      &_fullCircle {
+        position: absolute;
+      }
+      &_number {
+        position: absolute;
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+        top: 20px;
+        left: 15px;
+      }
+    }
+    &_stars {
+      gap: 10px;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      font-size: 16px;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+  }
+  &_tagline {
+    font-weight: 400;
+    color: #c5c5c1;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  &_overview {
+    color: white;
+    margin-bottom: 20px;
+    &_title {
+      font-size: 24px;
+    }
+    &_text {
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+  &_credits {
+    display: flex;
+    justify-content: space-evenly;
+    color: white;
+    .actor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      &_img {
+        img {
+          border-radius: 8px;
+          width: 80px;
+        }
+      }
+      &_name {
+        color: white;
+      }
+      &_character {
+        font-weight: 200;
+        font-style: italic;
+        color: #c5c5c1;
+      }
+    }
+  }
+}

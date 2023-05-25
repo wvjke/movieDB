@@ -1,26 +1,11 @@
 /* eslint-disable react/prop-types */
-import StarBorderOutlinedIcon from "@mui/icons-material/StarBorderOutlined";
-import StarIcon from "@mui/icons-material/Star";
 import "./index.scss";
 import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
-
-const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
+import Stars from "../../layouts/Stars";
+const MovieCard = ({ id, title, year, vote, imageUrl, genres }) => {
   const [color, setColor] = useState("primary");
-
-  const starsCount = () => {
-    const view = [];
-    for (let i = 1; i <= 10; i++) {
-      if (i <= vote) {
-        view.push(<StarIcon color="primary" key={i} />);
-      } else {
-        view.push(<StarBorderOutlinedIcon key={i} />);
-      }
-    }
-    return view;
-  };
 
   return (
     <article className="card swiper-lazy swiper-lazy-loading">
@@ -33,8 +18,10 @@ const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
           <li>{year}</li>
           <li>{`${genres[0]} / ${genres[1]}`}</li>
         </ul>
-        <div className="card_descr_stars">{starsCount()}</div>
-        <Link className="card_descr_link" to="/">
+        <div className="card_descr_stars">
+          <Stars vote={Math.round(vote)} />
+        </div>
+        <Link className="card_descr_link" to={`/movie/${id}`}>
           Read more
         </Link>
         <div
@@ -46,7 +33,6 @@ const MovieCard = ({ title, year, vote, imageUrl, genres }) => {
           <span>ADD TO FAVORITE</span>
         </div>
       </div>
-      <CircularProgress color="primary" className="swiper-lazy-preloader" />
     </article>
   );
 };

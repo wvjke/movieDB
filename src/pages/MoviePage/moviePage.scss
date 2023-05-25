@@ -1,0 +1,43 @@
+.movie_info {
+  margin-top: 20px;
+  display: flex;
+  gap: 40px;
+  height: 650px;
+  &_img {
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px 1px rgba(0, 0, 0, 0.55);
+  }
+}
+
+.btn_back {
+  background-color: transparent;
+  border: 1px solid #dbdbdb;
+  border-radius: 0.375em;
+  color: #363636;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: calc(0.5em - 1px) 1em;
+  position: relative;
+  text-align: center;
+}
+
+.btn_back:active {
+  border-color: #4a4a4a;
+  outline: 0;
+}
+
+.btn_back:focus {
+  border-color: #485fc7;
+  outline: 0;
+}
+
+.btn_back:hover {
+  border-color: #b5b5b5;
+}
+
+.btn_back:focus:not(:active) {
+  box-shadow: rgba(72, 95, 199, 0.25) 0 0 0 0.125em;
+}

@@ -1,9 +1,11 @@
 import "./homePage.scss";
-import { getPopularMovies, findMovie } from "../utils/api";
+import { getPopularMovies, findMovie } from "../../utils/api";
 import { useEffect, useState } from "react";
-import MoviesList from "../components/MoviesList";
-import { genres } from "../utils/genres";
-import SearchPanel from "../components/SearchPanel";
+import MoviesList from "../../components/MoviesList";
+import { genres } from "../../utils/genres";
+import SearchPanel from "../../components/SearchPanel";
+import { LinearProgress } from "@mui/material";
+
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
 
@@ -46,9 +48,11 @@ const HomePage = () => {
   return (
     <>
       <SearchPanel value={(value) => setSearchValue(value)} />
-      <MoviesList
-        movies={Object.keys(filterdMovies).length === 0 ? null : filterdMovies}
-      />
+      {Object.keys(filterdMovies).length === 0 ? (
+        <LinearProgress />
+      ) : (
+        <MoviesList movies={filterdMovies} />
+      )}
     </>
   );
 };
