@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import "./actors.scss";
-
 const Actors = ({ credits }) => {
   const setCredits = () => {
     const view = [];

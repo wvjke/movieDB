@@ -1,12 +1,7 @@
-.list {
-  display: flex;
-  gap: 50px;
-  transition: 0.5s ease all;
-}
 .arrow_prev {
   position: absolute;
   top: 50%;
-  left: 15%;
+  left: 13%;
   transform: translate(50%, 50%);
   transition: 0.5s ease all;
   cursor: pointer;
@@ -24,4 +19,20 @@
   &:hover {
     scale: 1.1;
   }
+}
+.swiper {
+  height: 77vh;
+}
+.swiper-wrapper {
+  padding-left: 40px;
+}
+
+.swiper-hide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.swiper-show {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
 }

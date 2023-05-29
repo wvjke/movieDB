@@ -1,4 +1,4 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap-reboot.min.css);
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap-reboot.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
@@ -7,6 +7,5 @@
 
 body {
   height: 100vh;
-  background-color: #52acff;
-  background-image: linear-gradient(180deg, #feff86 25%, #146c94 100%);
+  background: linear-gradient(to bottom, #bdc3c7, #2c3e50);
 }

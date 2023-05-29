@@ -12,30 +12,26 @@
 
 .btn_back {
   background-color: transparent;
-  border: 1px solid #dbdbdb;
+  border: x solid #dbdbdb;
   border-radius: 0.375em;
   color: #363636;
   cursor: pointer;
   display: inline-flex;
   font-size: 1rem;
+  font-weight: 600;
   line-height: 1.5;
-  padding: calc(0.5em - 1px) 1em;
+  padding: 5px 30px;
   position: relative;
   text-align: center;
 }
 
 .btn_back:active {
-  border-color: #4a4a4a;
-  outline: 0;
-}
-
-.btn_back:focus {
-  border-color: #485fc7;
+  border-color: #ffda00;
   outline: 0;
 }
 
 .btn_back:hover {
-  border-color: #b5b5b5;
+  border-color: #ffda00;
 }
 
 .btn_back:focus:not(:active) {

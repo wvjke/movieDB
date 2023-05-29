@@ -2,10 +2,9 @@
 import MovieCard from "./MovieCard";
 import "./moviesList.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
+import "swiper/swiper.min.css";
 import { useState } from "react";
 import Arrows from "../layouts/Arrows";
-
 const MoviesList = ({ movies }) => {
   const [swiper, setSwiper] = useState(null);
 
@@ -14,9 +13,11 @@ const MoviesList = ({ movies }) => {
       {movies ? (
         <>
           <Arrows swiper={swiper} />
+
           <Swiper
+            className="swiper-container"
             speed={1440}
-            spaceBetween={50}
+            spaceBetween={10}
             slidesPerView={3}
             lazyPreloadPrevNext={1}
             onSwiper={(s) => setSwiper(s)}

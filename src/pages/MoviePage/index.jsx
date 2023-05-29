@@ -5,6 +5,7 @@ import { LinearProgress } from "@mui/material";
 import MovieDescription from "../../components/MovieDescription";
 import { Link } from "react-router-dom";
 import "./moviePage.scss";
+import Header from "../../layouts/Header";
 const MoviePage = () => {
   const [movie, setMovie] = useState(null);
   const [credits, setCredits] = useState(null);
@@ -19,6 +20,7 @@ const MoviePage = () => {
 
   return movie && credits ? (
     <>
+      <Header>Movie Info</Header>
       <Link to="/">
         <button className="btn_back">Back</button>
       </Link>

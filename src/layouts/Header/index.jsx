@@ -1,11 +1,9 @@
+/* eslint-disable react/prop-types */
 import "./index.scss";
-import { Link } from "react-router-dom";
-const Header = () => {
+const Header = ({ children }) => {
   return (
     <header className="header">
-      <Link to="/" className="header_link">
-        Movie DB
-      </Link>
+      <h1 className="header_link">{children}</h1>
     </header>
   );
 };

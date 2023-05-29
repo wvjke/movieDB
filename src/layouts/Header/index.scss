@@ -1,24 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 .header {
-  margin: 20px 0 10px 0;
+  margin: 20px 0 30px 0;
   text-align: center;
-  a {
-    color: black;
-    text-decoration: none;
-    font-family: "Audiowide", cursive;
+  h1 {
+    color: mix(#ffda00, #fff, 70%);
     font-size: 5rem;
-    line-height: normal;
-    text-shadow: -0.01em -0.01em 0.01em #000;
-    animation: rise 1s ease-in-out 1s forwards;
-  }
-}
-
-@keyframes rise {
-  to {
-    text-shadow: 0em 0.01em #ff5, 0em 0.02em #ff5, 0em 0.02em 0.03em #ff5,
-      -0.01em 0.01em #333, -0.02em 0.02em #333, -0.03em 0.03em #333,
-      -0.04em 0.04em #333, -0.01em -0.01em 0.03em #000,
-      -0.02em -0.02em 0.03em #000, -0.03em -0.03em 0.03em #000;
-    transform: translateY(-0.025em) translateX(0.04em);
+    font-weight: 900;
+    font-style: italic;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-shadow: -0.0075em 0.0075em 0 mix(#fff, black, 94%),
+      0.005em 0.005em 0 mix(#fff, black, 10%),
+      0.01em 0.01em 0 mix(#fff, black, 12%),
+      0.015em 0.015em mix(#fff, black, 14%),
+      0.02em 0.02em 0 mix(#fff, black, 16%),
+      0.025em 0.025em 0 mix(#fff, black, 18%),
+      0.03em 0.03em 0 mix(#fff, black, 10%),
+      0.035em 0.035em 0 mix(#fff, black, 12%);
   }
 }

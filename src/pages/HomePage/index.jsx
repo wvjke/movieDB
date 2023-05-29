@@ -2,10 +2,11 @@ import "./homePage.scss";
 import { getPopularMovies, findMovie } from "../../utils/api";
 import { useEffect, useState } from "react";
 import MoviesList from "../../components/MoviesList";
-import { genres } from "../../utils/genres";
 import SearchPanel from "../../components/SearchPanel";
 import { LinearProgress } from "@mui/material";
-
+import Header from "../../layouts/Header";
+import { Link } from "react-router-dom";
+import { parseGenres } from "../../utils/parseGenres";
 const HomePage = () => {
   const [movies, setMovies] = useState(null);
 
@@ -25,33 +26,21 @@ const HomePage = () => {
     }
   }, [searchValue]);
 
-  const parseGenres = (list) => {
-    let newMoviesObj = {};
-    if (list) {
-      newMoviesObj = list.map((item) => {
-        const genresArray = [];
-        for (let i = 0; i < item.genre_ids.length; i++) {
-          for (let j = 0; j < 19; j++) {
-            if (item.genre_ids[i] == genres[j].id) {
-              genresArray.push(genres[j].name + " ");
-            }
-          }
-        }
-        return { ...item, genres: genresArray };
-      });
-    }
-    return newMoviesObj;
-  };
-
-  const filterdMovies = parseGenres(movies);
+  const parsedMovies = parseGenres(movies);
 
   return (
     <>
-      <SearchPanel value={(value) => setSearchValue(value)} />
-      {Object.keys(filterdMovies).length === 0 ? (
+      <Header>Movie DB</Header>
+      <nav className="nav_panel">
+        <SearchPanel value={(value) => setSearchValue(value)} />
+        <Link to="/favorites">
+          <button className="btn_back">Favorite Movies</button>
+        </Link>
+      </nav>
+      {Object.keys(parsedMovies).length === 0 ? (
         <LinearProgress />
       ) : (
-        <MoviesList movies={filterdMovies} />
+        <MoviesList movies={parsedMovies} />
       )}
     </>
   );
