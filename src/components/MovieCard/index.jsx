@@ -21,8 +21,8 @@ const MovieCard = ({ id, title, year, vote, imageUrl, genres }) => {
     return `${genres[0].name} / ${genres[1].name}`;
   };
 
-  const onFavoriteClicked = () => {
-    const swiper = document.querySelector(".swiper");
+  const onFavoriteClicked = (e) => {
+    const swiper = e.target.closest(".swiper");
     swiper.classList.remove("swiper-show");
     swiper.classList.add("swiper-hide");
     setTimeout(() => {
@@ -46,7 +46,7 @@ const MovieCard = ({ id, title, year, vote, imageUrl, genres }) => {
       </div>
       <div className="card_descr">
         <h2 className="card_descr_title">
-          {title.length < 45 ? title : `${title.slice(0, 45)}...`}
+          {title.length < 40 ? title : `${title.slice(0, 40)}...`}
         </h2>
         <ul className="card_descr_details">
           <li>{year}</li>

@@ -62,3 +62,35 @@ export const getCredits = async (req) => {
   const { data } = await axios.request(options);
   return await data;
 };
+
+export const getRecommendations = async (req) => {
+  const options = {
+    method: "GET",
+    url: `https://api.themoviedb.org/3/movie/${req}/recommendations`,
+    params: { language: "en-US", page: "1" },
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTNkODc0MjkxY2YyMzZjNTVjZDVmZjU4YjkyYTI2MyIsInN1YiI6IjY0NmEzOWMyYzM1MTRjMDEzYTU2MmQwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gxgcI06TN8ycJ-CodHonyfTRzZPv399lJby05LLpzFc",
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return await data.results;
+};
+
+export const getSimilar = async (req) => {
+  const options = {
+    method: "GET",
+    url: `https://api.themoviedb.org/3/movie/${req}/similar`,
+    params: { language: "en-US", page: "1" },
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxYTNkODc0MjkxY2YyMzZjNTVjZDVmZjU4YjkyYTI2MyIsInN1YiI6IjY0NmEzOWMyYzM1MTRjMDEzYTU2MmQwZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.gxgcI06TN8ycJ-CodHonyfTRzZPv399lJby05LLpzFc",
+    },
+  };
+
+  const { data } = await axios.request(options);
+  return await data.results;
+};

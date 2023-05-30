@@ -5,18 +5,28 @@ import { LinearProgress } from "@mui/material";
 import MovieDescription from "../../components/MovieDescription";
 import { Link } from "react-router-dom";
 import "./moviePage.scss";
+import { getRecommendations, getSimilar } from "../../utils/api";
 import Header from "../../layouts/Header";
+import MoviesList from "../../components/MoviesList";
+import { parseGenres } from "../../utils/parseGenres";
 const MoviePage = () => {
   const [movie, setMovie] = useState(null);
   const [credits, setCredits] = useState(null);
+  const [recommendedMovies, setRecommendedMovies] = useState(null);
+  const [similarMovies, setSimilarMovies] = useState(null);
 
   const { id } = useParams();
 
   useEffect(() => {
     getMovie(+id).then((res) => setMovie(res));
     getCredits(+id).then((res) => setCredits(res));
+    getRecommendations(+id).then((res) => setRecommendedMovies(res));
+    getSimilar(+id).then((res) => setSimilarMovies(res));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
+
+  const parsedRecommendedMovies = parseGenres(recommendedMovies);
+  const parsedSimilarMovies = parseGenres(similarMovies);
 
   return movie && credits ? (
     <>
@@ -43,6 +53,22 @@ const MoviePage = () => {
           overview={movie.overview}
           credits={credits.cast}
         />
+      </div>
+      <div className="recommended_movies">
+        <Header className="recommended_movies_header">Recommendations</Header>
+        {Object.keys(parsedRecommendedMovies).length === 0 ? (
+          <LinearProgress />
+        ) : (
+          <MoviesList movies={parsedRecommendedMovies} />
+        )}
+      </div>
+      <div className="similar_movies">
+        <Header className="similar_movies_header">Similar</Header>
+        {Object.keys(parsedSimilarMovies).length === 0 ? (
+          <LinearProgress />
+        ) : (
+          <MoviesList movies={parsedSimilarMovies} />
+        )}
       </div>
     </>
   ) : (

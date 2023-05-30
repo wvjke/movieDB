@@ -13,7 +13,6 @@ const MoviesList = ({ movies }) => {
       {movies ? (
         <>
           <Arrows swiper={swiper} />
-
           <Swiper
             className="swiper-container"
             speed={1440}
