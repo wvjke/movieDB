@@ -3,7 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import FavoriteMoviesContext from "./context/FavoriteMoviesContext";
 import { useState } from "react";
 const App = () => {
-  const [favMovies, setFavMovies] = useState(localStorage.getItem("favorites"));
+  const [favMovies, setFavMovies] = useState(
+    localStorage.getItem("favorites") ? localStorage.getItem("favorites") : ""
+  );
 
   const updateFavMovies = (id) => {
     let favMoviesArray = favMovies ? favMovies.split(",") : [];
