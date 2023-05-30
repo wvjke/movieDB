@@ -19,7 +19,6 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    console.log(searchValue);
     if (searchValue !== "") {
       findMovie(searchValue).then((res) => {
         setMovies(res);
