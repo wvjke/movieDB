@@ -3,7 +3,7 @@ import { getPopularMovies, findMovie } from "../../utils/api";
 import { useEffect, useState } from "react";
 import MoviesList from "../../components/MoviesList";
 import SearchPanel from "../../components/SearchPanel";
-import { LinearProgress } from "@mui/material";
+import Nothing from "../../layouts/Nothing";
 import Header from "../../layouts/Header";
 import { Link } from "react-router-dom";
 import { parseGenres } from "../../utils/parseGenres";
@@ -19,8 +19,13 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
+    console.log(searchValue);
     if (searchValue !== "") {
       findMovie(searchValue).then((res) => {
+        setMovies(res);
+      });
+    } else {
+      getPopularMovies().then((res) => {
         setMovies(res);
       });
     }
@@ -38,7 +43,7 @@ const HomePage = () => {
         </Link>
       </nav>
       {Object.keys(parsedMovies).length === 0 ? (
-        <LinearProgress />
+        <Nothing />
       ) : (
         <MoviesList movies={parsedMovies} />
       )}

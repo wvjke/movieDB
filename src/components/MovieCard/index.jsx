@@ -1,17 +1,10 @@
 /* eslint-disable react/prop-types */
 import "./index.scss";
-import BookmarkAddIcon from "@mui/icons-material/BookmarkAdd";
-import BookmarkRemoveIcon from "@mui/icons-material/BookmarkRemove";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import FavoriteButton from "../FavoriteButton";
 import Stars from "../../layouts/Stars";
-import FavoriteMoviesContext from "../../context/FavoriteMoviesContext";
 
 const MovieCard = ({ id, title, year, vote, imageUrl, genres }) => {
-  const [color, setColor] = useState("primary");
-
-  const { updateFavMovies } = useContext(FavoriteMoviesContext);
-
   const genresView = () => {
     if (genres.length === 0) {
       return "No genres data";
@@ -21,32 +14,24 @@ const MovieCard = ({ id, title, year, vote, imageUrl, genres }) => {
     return `${genres[0].name} / ${genres[1].name}`;
   };
 
-  const onFavoriteClicked = (e) => {
-    const swiper = e.target.closest(".swiper");
-    swiper.classList.remove("swiper-show");
-    swiper.classList.add("swiper-hide");
-    setTimeout(() => {
-      updateFavMovies(id);
-      swiper.classList.remove("swiper-hide");
-      swiper.classList.add("swiper-show");
-    }, 300);
-  };
-
-  const isFavorite = () => {
-    const favoriteMoviesArray = localStorage.getItem("favorites")
-      ? localStorage.getItem("favorites").split(",")
-      : [];
-    return favoriteMoviesArray.includes(id.toString());
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <article className="card swiper-lazy swiper-lazy-loading">
       <div className="card_img">
-        <img src={imageUrl || "noImg.png"} alt="" loading="lazy" />
+        <Link
+          className="card_descr_link"
+          to={`/movie/${id}`}
+          onClick={scrollToTop}
+        >
+          <img src={imageUrl || "noImg.png"} alt="" loading="lazy" />
+        </Link>
       </div>
       <div className="card_descr">
         <h2 className="card_descr_title">
-          {title.length < 40 ? title : `${title.slice(0, 40)}...`}
+          {title.length < 35 ? title : `${title.slice(0, 35)}...`}
         </h2>
         <ul className="card_descr_details">
           <li>{year}</li>
@@ -55,33 +40,14 @@ const MovieCard = ({ id, title, year, vote, imageUrl, genres }) => {
         <div className="card_descr_stars">
           <Stars vote={Math.round(vote)} />
         </div>
-        <Link className="card_descr_link" to={`/movie/${id}`}>
+        <Link
+          className="card_descr_link"
+          to={`/movie/${id}`}
+          onClick={scrollToTop}
+        >
           Read more
         </Link>
-        <div
-          onClick={onFavoriteClicked}
-          className="card_descr_favorite"
-          onMouseEnter={() => setColor("secondary")}
-          onMouseLeave={() => setColor("primary")}
-        >
-          {isFavorite() ? (
-            <>
-              <BookmarkRemoveIcon
-                className="card_descr_favorite_icon"
-                color={color}
-              />
-              <span>REMOVE FROM FAVORITE</span>
-            </>
-          ) : (
-            <>
-              <BookmarkAddIcon
-                className="card_descr_favorite_icon"
-                color={color}
-              />
-              <span>ADD TO FAVORITE</span>
-            </>
-          )}
-        </div>
+        <FavoriteButton id={id} />
       </div>
     </article>
   );

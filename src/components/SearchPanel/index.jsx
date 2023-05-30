@@ -6,9 +6,7 @@ const SearchPanel = ({ value }) => {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      if (inputValue !== "") {
-        value(inputValue);
-      }
+      value(inputValue);
     }, 1000);
 
     return () => clearTimeout(delayDebounceFn);

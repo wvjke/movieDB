@@ -3,7 +3,7 @@ import Header from "../../layouts/Header";
 import { getMovie } from "../../utils/api";
 import { Link } from "react-router-dom";
 import MoviesList from "../../components/MoviesList";
-import { LinearProgress } from "@mui/material";
+import Nothing from "../../layouts/Nothing";
 import "./favoriteMovies.scss";
 import FavoriteMoviesContext from "../../context/FavoriteMoviesContext";
 
@@ -30,11 +30,7 @@ const FavoriteMovies = () => {
       <Link to="/">
         <button className="btn_back fav">Back</button>
       </Link>
-      {favMovies.length > 0 ? (
-        <MoviesList movies={movies} />
-      ) : (
-        <LinearProgress />
-      )}
+      {favMovies.length > 0 ? <MoviesList movies={movies} /> : <Nothing />}
     </>
   );
 };

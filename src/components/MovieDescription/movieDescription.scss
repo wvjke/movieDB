@@ -32,9 +32,13 @@ $base-color: #ffda00;
   }
   &_vote {
     display: flex;
-    gap: 30px;
-    align-items: stretch;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-bottom: 20px;
+    &_left {
+      display: flex;
+      gap: 20px;
+    }
     &_rate {
       position: relative;
       &_fullCircle {

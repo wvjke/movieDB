@@ -3,8 +3,9 @@ import Stars from "../../layouts/Stars";
 import Actors from "../../layouts/Actors";
 import "./movieDescription.scss";
 import { CircularProgress } from "@mui/material";
-
+import FavoriteButton from "../FavoriteButton";
 const MovieDescription = ({
+  id,
   title,
   year,
   genres,
@@ -33,29 +34,34 @@ const MovieDescription = ({
         </li>
       </ul>
       <div className="movie_descr_vote">
-        <div className="movie_descr_vote_rate">
-          <CircularProgress
-            value={100}
-            variant="determinate"
-            size={"65px"}
-            thickness={5}
-            color="inherit"
-            className="movie_descr_vote_rate_fullCircle"
-          />
-          <CircularProgress
-            value={rate * 10}
-            variant="determinate"
-            className="movie_descr_vote_rate_circle"
-            size={"65px"}
-            thickness={5}
-          />
-          <div className="movie_descr_vote_rate_number">{rate} / 10</div>
-        </div>
-        <div className="movie_descr_vote_stars">
-          <div>&nbsp;User Score</div>
-          <div>
-            <Stars vote={rate} />
+        <div className="movie_descr_vote_left">
+          <div className="movie_descr_vote_rate">
+            <CircularProgress
+              value={100}
+              variant="determinate"
+              size={"65px"}
+              thickness={5}
+              color="inherit"
+              className="movie_descr_vote_rate_fullCircle"
+            />
+            <CircularProgress
+              value={rate * 10}
+              variant="determinate"
+              className="movie_descr_vote_rate_circle"
+              size={"65px"}
+              thickness={5}
+            />
+            <div className="movie_descr_vote_rate_number">{rate} / 10</div>
           </div>
+          <div className="movie_descr_vote_stars">
+            <div>&nbsp;User Score</div>
+            <div>
+              <Stars vote={rate} />
+            </div>
+          </div>
+        </div>
+        <div>
+          <FavoriteButton id={id} />
         </div>
       </div>
       <div className="movie_descr_tagline">{tagline}</div>

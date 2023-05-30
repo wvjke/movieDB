@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getMovie, getCredits } from "../../utils/api";
 import { useEffect, useState } from "react";
-import { LinearProgress } from "@mui/material";
+import Nothing from "../../layouts/Nothing";
 import MovieDescription from "../../components/MovieDescription";
 import { Link } from "react-router-dom";
 import "./moviePage.scss";
@@ -44,6 +44,7 @@ const MoviePage = () => {
           }
         />
         <MovieDescription
+          id={id}
           title={movie.title}
           year={movie.release_date}
           genres={movie.genres.map((item) => item.name)}
@@ -57,7 +58,7 @@ const MoviePage = () => {
       <div className="recommended_movies">
         <Header className="recommended_movies_header">Recommendations</Header>
         {Object.keys(parsedRecommendedMovies).length === 0 ? (
-          <LinearProgress />
+          <Nothing />
         ) : (
           <MoviesList movies={parsedRecommendedMovies} />
         )}
@@ -65,14 +66,14 @@ const MoviePage = () => {
       <div className="similar_movies">
         <Header className="similar_movies_header">Similar</Header>
         {Object.keys(parsedSimilarMovies).length === 0 ? (
-          <LinearProgress />
+          <Nothing />
         ) : (
           <MoviesList movies={parsedSimilarMovies} />
         )}
       </div>
     </>
   ) : (
-    <LinearProgress />
+    <Nothing />
   );
 };
 
